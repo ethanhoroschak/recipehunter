@@ -1,0 +1,20 @@
+<h1>Searching for - <%=@search_term %></h1>
+<% if @recipes.nil? %>
+	<p>No recipes found for that search. Sorry</p>
+<% else %>
+
+	<table border="1">
+	<tr>
+		<th>Thumbnail</th>
+		<th>Title</th>
+		<th>Social Rank</th>
+	</tr>
+	<% @recipes.each do |recipe| %>
+	<tr>
+		<td><%= link_to image_tag(recipe["image_url"]), recipe["f2f_url"]%></td>
+		<td><%= link_to sanitize(recipe["title"]), recipe["f2f_url"]%></td>
+		<td><%= recipe["social_rank"]%></td>
+	</tr>
+	<% end %>
+</table>
+<% end %>
